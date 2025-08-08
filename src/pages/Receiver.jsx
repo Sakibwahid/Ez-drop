@@ -18,7 +18,7 @@ export default function Receiver() {
     setLoading(true);
 
     try {
-      const snapshot = await get(ref(database, `sessions/${pinInput}/data`));
+      const snapshot = await get(ref(database, sessions/${pinInput}/data));
       if (snapshot.exists()) {
         setSessionData(snapshot.val());
       } else {
