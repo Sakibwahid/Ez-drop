@@ -10,7 +10,7 @@ const variants = {
 const sizes = {
   sm: "px-3 py-1 text-sm",
   md: "px-4 py-2 text-base",
-  lg: "px-5 py-3 text-lg",
+  lg: "px-4 py-3 text-lg",
 };
 
 export default function Button({
@@ -23,7 +23,7 @@ export default function Button({
   return (
     <button
       className={clsx(
-        "rounded font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2",
+        "rounded font-medium transition-colors inline-block duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2",
         variants[variant],
         sizes[size],
         className
