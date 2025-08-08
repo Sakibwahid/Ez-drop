@@ -18,7 +18,7 @@ export default function Receiver() {
     setLoading(true);
 
     try {
-      const snapshot = await get(ref(database, sessions/${pinInput}/data));
+      const snapshot = await get(ref(database, `sessions/${pinInput}/data`));
       if (snapshot.exists()) {
         setSessionData(snapshot.val());
       } else {
@@ -35,7 +35,7 @@ export default function Receiver() {
   useEffect(() => {
     if (!sessionData) return;
 
-    const dataRef = ref(database, sessions/${pinInput}/data);
+    const dataRef = ref(database, `sessions/${pinInput}/data`);
     const unsubscribe = onValue(dataRef, (snapshot) => {
       if (snapshot.exists()) {
         setSessionData(snapshot.val());
@@ -46,7 +46,7 @@ export default function Receiver() {
   }, [pinInput, sessionData]);
 
   return (
-    <div className="max-w-lg mx-auto p-6 bg-[#FFFAFA] rounded shadow-md flex flex-col gap-6">
+    <div className="max-w-lg min-h-screen mx-auto p-6 rounded shadow-md flex flex-col justify-center items-center gap-6">
       <h2 className="text-2xl font-bold">Receiver</h2>
       {!sessionData ? (
         <>
