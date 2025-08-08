@@ -6,7 +6,7 @@ import "./index.css";
 
 function App() {
   return (
-    <div className="app-bg h-screen flex items-center justify-center">
+    <div className="app-bg min-h-screen flex items-center justify-center">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/sender" element={<Sender />} />
