@@ -39,7 +39,7 @@ export default function Sender() {
 
   return (
     <div className="max-w-lg mx-auto p-6 bg-[#FFFAFA] rounded shadow-md flex flex-col gap-6">
-      <h2 className="text-2xl font-bold">Sender</h2>
+      <h2 className="text-2xl text-center font-bold">Write text</h2>
       <textarea
         placeholder="Enter text to share..."
         value={text}
