@@ -8,8 +8,8 @@ export default function Home() {
 
   return (
     <div className="app-bg flex flex-col items-center justify-center min-h-screen px-4">
-      <h1 className="text-4xl font-extrabold text-gray-800 mb-2">Ez Drop</h1>
-      <p className="text-gray-600 text-center max-w-md mb-8">
+      <h1 className="text-4xl md:text-6xl font-extrabold text-gray-800 mb-4">Ez Drop</h1>
+      <p className="text-xl text-gray-600 text-center max-w-lg mb-8">
         Welcome to <span className="font-semibold">Ez Drop</span> — a fast and
         seamless way to share files between devices. Choose a role to get started.
       </p>

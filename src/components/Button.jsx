@@ -17,13 +17,13 @@ export default function Button({
   children,
   variant = "primary",
   size = "md",
-  className,
+  className="",
   ...props
 }) {
   return (
     <button
       className={clsx(
-        "rounded font-medium transition-colors inline-block duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2",
+        "rounded font-medium transition-colors inline-block duration-200",
         variants[variant],
         sizes[size],
         className

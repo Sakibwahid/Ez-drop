@@ -12,6 +12,7 @@ export default function Sender() {
   const [text, setText] = useState("");
   const [pin, setPin] = useState(null);
   const [showOverlay, setShowOverlay] = useState(false);
+  const [textsend, setoption] = useState(true);
 
   const handleShare = () => {
     if (!text.trim()) return alert("Enter some text to share");
@@ -19,7 +20,7 @@ export default function Sender() {
     const newPin = generatePin();
     setPin(newPin);
 
-    // Save data to Firebase
+
     set(ref(database, `sessions/${newPin}`), {
       data: {
         text,
@@ -31,6 +32,8 @@ export default function Sender() {
     setShowOverlay(true);
   };
 
+
+
   const closeOverlay = () => {
     setShowOverlay(false);
     setPin(null);
@@ -38,22 +41,51 @@ export default function Sender() {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-6 bg-[#FFFAFA] rounded shadow-md flex flex-col gap-6">
-      <h2 className="text-2xl text-center font-bold">Write text</h2>
-      <textarea
-        placeholder="Enter text to share..."
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        rows={6}
-        className="border rounded p-3 resize-none"
-      />
-      {/* Placeholder for file upload here */}
+    <div className="mx-2 w-md h-[60vh] p-6 bg-[#FFFAFA] rounded shadow-md flex flex-col gap-4 items-center justify-between">
+      <div className="flex items-center gap-2 mb-2">
+        <Button
+          variant={null}
+          onClick={() => setoption(true)}
+          className={`rounded-none border-b-4 transition-colors duration-300 ease-in-out ${textsend ? "border-blue-600" : "border-transparent"
+            } `}
+        >
+          Text
+        </Button>
+
+        <Button
+          variant={null}
+          onClick={() => setoption(false)}
+          className={`rounded-none border-b-4 transition-colors duration-300 ease-in-out ${!textsend ? "border-blue-600" : "border-transparent"
+            } `}
+        >
+          File
+        </Button>
+      </div>
+
+      {textsend && (
+        <div className="w-full flex flex-col gap-4">
+          <h2 className="text-2xl text-center font-bold">Write text</h2>
+          <textarea
+            placeholder="Enter text to share..."
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            rows={6}
+            className="border rounded p-3 resize-none"
+          />
+        </div>
+      )}
+
+      {!textsend && (
+        <div>
+          <h2 className="text-2xl text-center font-bold">Upload file</h2>
+        </div>
+      )}
 
       <Button onClick={handleShare}>Share</Button>
 
       {showOverlay && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4">
-          <div className="bg-white p-6 rounded shadow-lg max-w-sm w-full relative">
+        <div className="fixed inset-0 flex items-center justify-center p-4">
+          <div className="bg-[#ffff]  p-6 rounded shadow-lg max-w-sm w-full relative">
             <h3 className="text-xl font-semibold mb-4">Share this PIN or QR code</h3>
             <div className="flex flex-col items-center gap-4">
               <QRCodeDisplay value={pin} />
