@@ -41,7 +41,7 @@ export default function Sender() {
   };
 
   return (
-    <div className="mx-2 w-md h-[60vh] p-6 bg-[#FFFAFA] rounded shadow-md flex flex-col gap-4 items-center justify-between">
+    <div className="mx-2 w-md p-6 bg-[#FFFAFA] rounded shadow-md flex flex-col gap-4 items-center justify-between">
       <div className="flex items-center gap-2 mb-2">
         <Button
           variant={null}
@@ -62,24 +62,26 @@ export default function Sender() {
         </Button>
       </div>
 
-      {textsend && (
-        <div className="w-full flex flex-col gap-4">
-          <h2 className="text-2xl text-center font-bold">Write text</h2>
-          <textarea
-            placeholder="Enter text to share..."
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            rows={6}
-            className="border rounded p-3 resize-none"
-          />
-        </div>
-      )}
+      <div className="w-full">
+        {textsend && (
+          <div className="flex flex-col gap-4">
+            <h2 className="text-2xl text-center font-bold">Write text</h2>
+            <textarea
+              placeholder="Enter text to share..."
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              rows={8}
+              className="border rounded p-3 resize-none"
+            />
+          </div>
+        )}
 
-      {!textsend && (
-        <div>
-          <h2 className="text-2xl text-center font-bold">Upload file</h2>
-        </div>
-      )}
+        {!textsend && (
+          <div>
+            <h2 className="text-2xl text-center font-bold">Upload file</h2>
+          </div>
+        )}
+      </div>
 
       <Button onClick={handleShare}>Share</Button>
 
