@@ -13,6 +13,10 @@ export default function Sender() {
   const [pin, setPin] = useState(null);
   const [showOverlay, setShowOverlay] = useState(false);
   const [textsend, setoption] = useState(true);
+  const BASE_URL = "https://ezdrop.netlify.app"; // your real deployed URL
+  const shareUrl = `${BASE_URL}/receiver?pin=${pin}`;
+
+
 
   const handleShare = () => {
     if (!text.trim()) return alert("Enter some text to share");
@@ -86,13 +90,20 @@ export default function Sender() {
       <Button onClick={handleShare}>Share</Button>
 
       {showOverlay && (
-        <div className="fixed inset-0 flex items-center justify-center p-4">
-          <div className="bg-[#ffff]  p-6 rounded shadow-lg max-w-sm w-full relative">
-            <h3 className="text-xl font-semibold mb-4">Share this PIN or QR code</h3>
-            <div className="flex flex-col items-center gap-4">
-              <QRCodeDisplay value={pin} />
-              <div className="font-mono text-2xl select-all">{pin}</div>
-              <Button onClick={closeOverlay} variant="secondary">
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-sm p-6 relative animate-fadeIn">
+            <h3 className="text-2xl font-bold text-center mb-6">Share this PIN or QR code</h3>
+
+            <div className="flex flex-col items-center gap-6">
+              <div className="p-4 rounded-xl bg-gray-50 shadow-inner">
+                <QRCodeDisplay value={shareUrl} />
+              </div>
+
+              <div className="px-4 py-2 bg-blue-100 text-blue-800 rounded-lg font-mono text-3xl font-bold tracking-widest select-all shadow">
+                {pin}
+              </div>
+
+              <Button onClick={closeOverlay} variant="secondary" className="mt-4 w-full">
                 Close
               </Button>
             </div>
