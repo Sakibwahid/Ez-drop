@@ -1,6 +1,7 @@
 // firebase.js
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
+import { getFunctions } from "firebase/functions";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDzZmT9ajBK7QXkutN2KwXjbO4J4OzVlNs",
@@ -14,8 +15,12 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase app
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 
-// Initialize and export Realtime Database instance
+// Initialize Realtime Database
 export const database = getDatabase(app);
+
+// Initialize Functions
+export const functions = getFunctions(app, "asia-southeast1");
+ 
 
