@@ -67,7 +67,7 @@ export default function Receiver() {
   };
 
   return (
-    <div className="max-w-lg min-h-screen mx-auto p-6 rounded shadow-md flex flex-col justify-center items-center gap-6">
+    <div className="max-w-lg mx-auto p-6 rounded shadow-md flex flex-col justify-center items-center gap-6">
       <h2 className="text-2xl font-bold">Receiver</h2>
 
       {!sessionData ? (

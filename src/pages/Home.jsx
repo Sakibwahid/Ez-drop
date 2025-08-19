@@ -7,17 +7,27 @@ export default function Home() {
   const navigate = useNavigate();
 
   return (
-    <div className="app-bg flex flex-col items-center justify-center min-h-screen px-4">
-      <h1 className="text-4xl md:text-6xl font-extrabold text-gray-800 mb-4">Ez Drop</h1>
-      <p className="text-xl text-gray-600 text-center max-w-lg mb-8">
-        Welcome to <span className="font-semibold">Ez Drop</span> — a fast and
-        seamless way to share files between devices. Choose a role to get started.
+    <div className="flex flex-col items-center justify-center h-full px-4">
+      <div className="flex items-center mb-6 animate-bounce">
+  
+        <h1 className="text-4xl md:text-6xl font-bold text-gray-600">Ez-Drop</h1>
+      </div>
+
+      <p className="text-xl text-gray-700 text-center max-w-xl mb-10">
+       a fast and
+      seamless way to share files between devices. Choose your role to get started.
       </p>
-      <div className="flex gap-6">
-        <Button className="px-6 py-3 text-lg" onClick={() => navigate("/sender")}>
+      <div className="flex gap-4">
+        <Button
+          className="px-6 py-4 text-lg font-semibold bg-primary text-white rounded-lg shadow hover:bg-primary-dark transition"
+          onClick={() => navigate("/sender")}
+        >
           📤 Sender
         </Button>
-        <Button className="px-6 py-3 text-lg" onClick={() => navigate("/receiver")}>
+        <Button
+          className="px-6 py-4 text-lg font-semibold bg-secondary text-white rounded-lg shadow hover:bg-secondary-dark transition"
+          onClick={() => navigate("/receiver")}
+        >
           📥 Receiver
         </Button>
       </div>

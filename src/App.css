@@ -1,16 +1,17 @@
 @import "tailwindcss";
 
 .app-bg {
-  background-color: #FFFAFA; /* your base white-chocolate tone */
+  background-color: #FFFAFA;
+  /* your base white-chocolate tone */
 
   /* Create the grid */
   background-image:
-    linear-gradient(to right, rgba(0, 0, 0, 0.059) 1px, transparent 1px), /* vertical lines - 20% opacity */
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.073) 1px, transparent 1px); /* horizontal lines - 20% opacity */
+    linear-gradient(to right, rgba(0, 0, 0, 0.059) 0.5px, transparent 1px),
+    /* vertical lines - 10% opacity */
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.073) 0.5px, transparent 1px);
+  /* horizontal lines - 10% opacity */
 
-  background-size: 70px 70px; /* grid spacing */
+  background-size: 90px 90px;
 
   position: relative;
 }
-
-
