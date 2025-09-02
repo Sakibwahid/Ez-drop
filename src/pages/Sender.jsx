@@ -16,27 +16,24 @@ export default function Sender() {
   const BASE_URL = "https://ezdrop.netlify.app"; // your real deployed URL
   const shareUrl = `${BASE_URL}/receiver?pin=${pin}`;
 
-
-
   const handleShare = () => {
-    if (!text.trim()) return alert("Enter some text to share");
+  if (!text.trim()) return alert("Enter some text to share");
 
-    const newPin = generatePin();
-    setPin(newPin);
+  const newPin = generatePin();
+  setPin(newPin);
 
+  const now = Date.now();
+  const expiresIn = 5 * 60 * 1000; // 5 minutes, adjust as needed
 
-    set(ref(database, `sessions/${newPin}`), {
-      data: {
-        text,
-        // file: {}, // future extension placeholder
-      },
-      createdAt: Date.now(),
-    });
+ set(ref(database, `sessions/${newPin}`), {
+  pin: newPin,        // <--- must match the path
+  data: { text },
+  createdAt: now,
+  expiresAt: now + expiresIn
+});
 
-    setShowOverlay(true);
-  };
-
-
+  setShowOverlay(true);
+};
 
   const closeOverlay = () => {
     setShowOverlay(false);

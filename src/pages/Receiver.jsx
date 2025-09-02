@@ -10,7 +10,7 @@ export default function Receiver() {
   const [error, setError] = useState("");
   const [sessionData, setSessionData] = useState(null);
   const [loading, setLoading] = useState(false);
-
+  
   // On page load: check if URL has a valid ?pin=XXXXXX
   useEffect(() => {
     const pinFromUrl = searchParams.get("pin");
@@ -67,7 +67,7 @@ export default function Receiver() {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-6 rounded shadow-md flex flex-col justify-center items-center gap-6">
+     <div className="mx-2 w-md p-6 bg-[#FFFAFA] rounded shadow-md flex flex-col gap-4 items-center justify-between">
       <h2 className="text-2xl font-bold">Receiver</h2>
 
       {!sessionData ? (
@@ -88,7 +88,7 @@ export default function Receiver() {
       ) : (
         <>
           <h3 className="font-semibold">Received Text:</h3>
-          <pre className="bg-gray-100 p-4 rounded whitespace-pre-wrap">{sessionData.text}</pre>
+          <p className="bg-gray-100 h-full p-4 rounded whitespace-pre-wrap">{sessionData.text}</p>
           <Button
             onClick={() => {
               navigator.clipboard.writeText(sessionData.text);
